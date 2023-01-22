@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\CounterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('api')->group(function () {
+    Route::resource('counter', 'CounterController');
 });
