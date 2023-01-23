@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Models\Counter;
+use Illuminate\Support\Facades\DB;
+use App\Models\Counter;
 class CounterController extends Controller
 {
     /**
@@ -14,7 +15,12 @@ class CounterController extends Controller
     public function index()
     {
         //
-        dd("COUNTER");
+		// $counter = new Counter;
+		// $result = $counter->whereRaw("created_at::TIMESTAMP::DATE = NOW()::TIMESTAMP::DATE");
+		$currentDate = date('Y-m-d');
+		$query = "select count(*) from counter where created_at::TIMESTAMP::DATE = '$currentDate'";
+		$result = DB::SELECT($query)[0]->count;
+        return response()->json($result);
     }
 
     /**
@@ -24,9 +30,8 @@ class CounterController extends Controller
      */
     public function create()
     {
-        //
-        $counter = new Counter;
-        $counter->save();
+        // 
+        
     }
 
     /**
@@ -38,6 +43,10 @@ class CounterController extends Controller
     public function store(Request $request)
     {
         //
+		$counter = new Counter;
+		$counter->counter_test = 'LaReact';
+		
+		return response()->json($counter->save());
     }
 
     /**

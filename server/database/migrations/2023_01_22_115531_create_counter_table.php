@@ -15,6 +15,7 @@ class CreateCounterTable extends Migration
     {
         Schema::create('counter', function (Blueprint $table) {
             $table->bigIncrements('counter_id');
+            $table->string('counter_test')->nullable();
             $table->timestamps();
         });
     }
