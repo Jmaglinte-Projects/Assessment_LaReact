@@ -15,11 +15,13 @@ class CounterController extends Controller
     public function index()
     {
         //
-		// $counter = new Counter;
-		// $result = $counter->whereRaw("created_at::TIMESTAMP::DATE = NOW()::TIMESTAMP::DATE");
+		$counter = new Counter;
 		$currentDate = date('Y-m-d');
-		$query = "select count(*) from counter where created_at::TIMESTAMP::DATE = '$currentDate'";
-		$result = DB::SELECT($query)[0]->count;
+
+		$result = $counter->whereRaw("created_at::TIMESTAMP::DATE = '$currentDate'")->count();
+		// $query = "select count(*) from counter where created_at::TIMESTAMP::DATE = '$currentDate'";
+		// $result = DB::SELECT($query)[0]->count;
+		
         return response()->json($result);
     }
 

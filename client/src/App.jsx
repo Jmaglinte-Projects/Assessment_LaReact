@@ -33,9 +33,17 @@ function App() {
           {/* <img src={reactLogo} className="logo react" alt="React logo" /> */}
         </a>
       </div> 
-      <div className="card">
-        <button onClick={handleClick}>
-          count is {count}
+      <div className="card" style={{ display: 'flex', gap: '25px', flexDirection: 'column' }}>
+		<div style={{ fontSize: '70px', display: 'block', fontWeight: 'bold' }}>{count}</div>
+        <button onClick={handleClick} style={{
+			background: '#375de1',
+			color: '#fff',
+			fontWeight: 'bold',
+			textTransform: 'uppercase',
+			fontSize: '30px',
+			boxShadow:' 0 0 10px #00000059',
+		}}>
+          Click Me
         </button> 
       </div> 
     </div>
